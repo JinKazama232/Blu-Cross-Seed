@@ -40,6 +40,6 @@ for i in range(len(upload_list)):
     else: 
         torrent_file = upload_list.iloc[i, 0] + '.torrent'
         url = response["data"][0]["attributes"]["download_link"]
-        os.chdir("C:\\Users\\zbyni\\AppData\\Local\\Blu-Uploads\\.torrents")
+        os.chdir("C:\\Users\\zbyni\\AppData\\Local\\Blu-Uploads")
         response_dl = request.urlretrieve(url, torrent_file)
         print("Torrent found, saving: "+ torrent_file)
