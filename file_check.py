@@ -7,14 +7,14 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import time
 from urllib import request 
+from config import *
 
 search_url = 'https://blutopia.xyz/api/torrents/filter'
 torrent_url = 'https://blutopia.xyz/api/torrents/'
 upload_url = 'https://blutopia.xyz/api/torrents/upload' 
-delay = 20
 ### Generate file list
 upload_list = pd.DataFrame()
-paths = (r'H:\\Movies', r'G:\\Movies', r'G:\\xSeed\\PTP')
+paths = media_folders
 
 for i in range(len(paths)):
 
@@ -23,10 +23,10 @@ for i in range(len(paths)):
 
 
 for i in range(len(upload_list)):
-    time.sleep(delay)
+    time.sleep(api_delay)
     print("Searching: ", i,"/", len(upload_list))
     params = {
-        'api_token' : "fCYiRFERR0IhtD3wwvQIJRov8IlfjdEi5lU8CRID4NH1JM2IAmVsd9DW8PZXdhckruK6GnK9qCVu3TvPq39ihkq1CRElMU4bUaSZ",
+        'api_token' : token,
         'file_name' : upload_list.iloc[i, 0]
     }
     
@@ -40,6 +40,6 @@ for i in range(len(upload_list)):
     else: 
         torrent_file = upload_list.iloc[i, 0] + '.torrent'
         url = response["data"][0]["attributes"]["download_link"]
-        os.chdir("C:\\Users\\zbyni\\AppData\\Local\\Blu-Uploads")
+        os.chdir(output_folder)
         response_dl = request.urlretrieve(url, torrent_file)
         print("Torrent found, saving: "+ torrent_file)

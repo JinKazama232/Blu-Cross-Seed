@@ -12,3 +12,6 @@ output_folder = r'D:\\Code\\Torrent Output\\Blu-Cross-Seed\\.torrents'
 
 #// Excel file report folder // #
 report_folder = r'D:\\Code\\Torrent Output\\Blu-Cross-Seed\\.excels'
+
+#// API delay in seconds // #
+api_delay = 5
