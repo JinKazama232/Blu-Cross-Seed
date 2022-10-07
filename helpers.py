@@ -10,11 +10,14 @@ class Msg:
         return "Searching: ", iter,"/", length
 
     def save(self, file):
-            self.file = file 
-            "Torrent found, saving: "+ file
+        self.file = file 
+        return "Torrent found, saving: "+ file
 
 def create_file_list(path, upload_list):
     for i in range(len(path)):
         file_list = os.listdir(path[i])
         upload_list = upload_list.append(file_list)
     return upload_list
+
+def history():
+    

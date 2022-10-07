@@ -16,6 +16,9 @@ report_folder = r'D:\\Code\\Torrent Output\\Blu-Cross-Seed\\.excels'
 #// API delay in seconds // #
 api_delay = 5
 
+#// Maintaing history and ingore previous finds // #
+keep_history = True
+
 #// API URLs // #
 search_url = 'https://blutopia.xyz/api/torrents/filter'
 torrent_url = 'https://blutopia.xyz/api/torrents/'
