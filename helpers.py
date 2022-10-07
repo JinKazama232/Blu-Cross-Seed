@@ -1,3 +1,5 @@
+import os
+
 class Msg: 
     def __init__(self):
         pass
@@ -11,6 +13,6 @@ class Msg:
             self.file = file 
             "Torrent found, saving: "+ file
 
-    def result(self):
-            return "Torrent not on Blutopia"
-            
+def create_file_list(path, upload_list):
+    file_list = os.listdir(path)
+    upload_list = upload_list.append(file_list)

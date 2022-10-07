@@ -16,10 +16,7 @@ upload_list = pd.DataFrame()
 paths = _config.media_folders
 
 for i in range(len(paths)):
-
-    file_list = os.listdir(paths[i])
-    upload_list = upload_list.append(file_list)
-
+    create_file_list(paths[i], upload_list)
 
 for i in range(len(upload_list)):
     time.sleep(_config.api_delay)
