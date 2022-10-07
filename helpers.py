@@ -14,5 +14,7 @@ class Msg:
             "Torrent found, saving: "+ file
 
 def create_file_list(path, upload_list):
-    file_list = os.listdir(path)
-    upload_list = upload_list.append(file_list)
+    for i in range(len(path)):
+        file_list = os.listdir(path[i])
+        upload_list = upload_list.append(file_list)
+    return upload_list
