@@ -5,12 +5,12 @@ class Msg:
     def search(self, iter, length):
         self.iter = iter 
         self.length = length 
-        print("Searching: ", iter,"/", length)
+        return "Searching: ", iter,"/", length
 
     def save(self, file):
             self.file = file 
-            print("Torrent found, saving: "+ file)
+            "Torrent found, saving: "+ file
 
-    def result(self, file):
-            print("Torrent not on Blutopia")
+    def result(self):
+            return "Torrent not on Blutopia"
             

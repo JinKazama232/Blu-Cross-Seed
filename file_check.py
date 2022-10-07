@@ -6,14 +6,14 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import time
 from urllib import request 
-from config import *
+import _config
 from helpers import *
 
 m = Msg()
 
 ### Generate file list
 upload_list = pd.DataFrame()
-paths = media_folders
+paths = _config.media_folders
 
 for i in range(len(paths)):
 
@@ -22,23 +22,23 @@ for i in range(len(paths)):
 
 
 for i in range(len(upload_list)):
-    time.sleep(api_delay)
-    m.search(i, len(upload_list))
+    time.sleep(_config.api_delay)
+    print(m.search(i, len(upload_list)))
     params = {
-        'api_token' : token,
+        'api_token' : _config.token,
         'file_name' : upload_list.iloc[i, 0]
     }
     
-    response = requests.get(search_url, params=params)
+    response = requests.get(_config.search_url, params=params)
     response = response.json()
     
     if len(response['data']) == 0:
-        Msg.result()
+        print("Torrent not on Blutopia")
         continue
 
     else: 
         torrent_file = upload_list.iloc[i, 0] + '.torrent'
         url = response["data"][0]["attributes"]["download_link"]
-        os.chdir(output_folder)
+        os.chdir(_config.output_folder)
         response_dl = request.urlretrieve(url, torrent_file)
-        m.result(torrent_file)
+        print(m.save(torrent_file))
