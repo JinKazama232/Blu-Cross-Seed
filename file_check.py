@@ -1,4 +1,5 @@
 import pandas as pd
+import imp
 import csv
 import os
 import requests
@@ -7,16 +8,17 @@ import json
 import time
 from urllib import request 
 import _config
-from helpers import *
+imp.reload(_config)
+import helpers
+imp.reload(helpers)
 
-m = Msg()
+m = helpers.Msg()
 
 ### Generate file list
 upload_list = pd.DataFrame()
 paths = _config.media_folders
 
-for i in range(len(paths)):
-    create_file_list(paths[i], upload_list)
+upload_list = helpers.create_file_list(paths, upload_list)
 
 for i in range(len(upload_list)):
     time.sleep(_config.api_delay)
